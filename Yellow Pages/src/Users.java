@@ -6,6 +6,8 @@ public class Users {
     Boolean guestUser;
     Boolean adminUser;
     String userType;
+
+    int defaultPassword = 1234;
     public String userStatus( ){
         Scanner scanner = new Scanner(System.in);
         System.out.println( "If you are a guest enter 1 | If you are an admin enter 1");
@@ -36,7 +38,28 @@ public class Users {
 
     public void login(){
 if (Objects.equals(userType, "Admin")){
+    Scanner scanner = new Scanner(System.in);
     System.out.println("enter password:");
+
+    int newPasswordEntry;
+    int newPasswordEntryTwo;
+    int newPassword;
+
+    defaultPassword = scanner.nextInt();
+    if (defaultPassword == 1234){
+        System.out.println("Please Create new password with four digits:");
+        newPasswordEntry = scanner.nextInt();
+        System.out.println("Please reenter contact:");
+        newPasswordEntryTwo = scanner.nextInt();
+
+        if (newPasswordEntry == newPasswordEntryTwo){
+            newPassword =newPasswordEntryTwo;
+        }
+
+
+
+
+    }
 }
     }
 }
