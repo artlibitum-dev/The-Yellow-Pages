@@ -1,16 +1,16 @@
 import java.util.Objects;
 import java.util.Scanner;
-
 public class Users {
     int userLoginChoice = 0;
     Boolean guestUser;
     Boolean adminUser;
     String userType;
 
+
     int defaultPassword = 1234;
     public String userStatus( ){
         Scanner scanner = new Scanner(System.in);
-        System.out.println( "If you are a guest enter 1 | If you are an admin enter 1");
+        System.out.println( "If you are a guest enter 1 | If you are an admin enter 2");
         // have user choose there status
         do {
             userLoginChoice = scanner.nextInt();
@@ -54,6 +54,9 @@ if (Objects.equals(userType, "Admin")){
 
         if (newPasswordEntry == newPasswordEntryTwo){
             newPassword =newPasswordEntryTwo;
+        } else {
+            System.out.println("Didn't match, Please try again!");
+            login();
         }
 
 
