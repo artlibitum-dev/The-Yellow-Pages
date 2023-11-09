@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.midi.Soundbank;
-
 public class YellowPages {
 
     private static List<ContactDetails> contacts = new ArrayList<>();

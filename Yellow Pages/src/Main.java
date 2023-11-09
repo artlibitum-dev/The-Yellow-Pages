@@ -9,26 +9,35 @@ public class Main {
         // welcome message
         System.out.println("Welcome to Yellow Pages!" + "\n");
 
-        // display menu
-        Menu menuDisplay = new Menu();
-        menuDisplay.menuDisplay();
-        int userMenuChoice = menuDisplay.userMenuChoice;
+        // get users status
+        Users userStatus = new Users();
+        String userRole;
+        userRole = userStatus.userStatus();
+        System.out.println("Your role is: " + userRole + "\n");
 
-        YellowPages yellowPages = new YellowPages();
+        while (true) {
+            // display menu
+            Menu menuDisplay = new Menu();
+            menuDisplay.menuDisplay(userRole);
+            int userMenuChoice = menuDisplay.userMenuChoice;
 
-        if (userMenuChoice == 0) /* Exit */ {
-            System.out.println("Exiting: Bye Bye");
-            System.exit(0);
-        } else if (userMenuChoice == 1) /* View */ {
-            yellowPages.viewContacts();
-        } else if (userMenuChoice == 2) /* Search */ {
-            yellowPages.searchContacts();
-        } else if (userMenuChoice == 3) /* Edit */ {
-            yellowPages.editContacts();
-        } else if (userMenuChoice == 4) /* Add */ {
-            yellowPages.addContacts();
-        } else if (userMenuChoice == 5) /* Remove */ {
-            yellowPages.removeContacts();
+            YellowPages yellowPages = new YellowPages();
+
+            if (userMenuChoice == 0) /* Exit */ {
+                System.out.println("Exiting: Bye Bye");
+                System.exit(0);
+            } else if (userMenuChoice == 1) /* View */ {
+                yellowPages.viewContacts();
+            } else if (userMenuChoice == 2) /* Search */ {
+                yellowPages.searchContacts();
+            } else if (userMenuChoice == 3) /* Edit */ {
+                yellowPages.editContacts();
+            } else if (userMenuChoice == 4) /* Add */ {
+                yellowPages.addContacts();
+            } else if (userMenuChoice == 5) /* Remove */ {
+                yellowPages.removeContacts();
+            }
+
         }
 
     }

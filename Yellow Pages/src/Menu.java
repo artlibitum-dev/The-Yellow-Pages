@@ -21,17 +21,11 @@ public class Menu {
         return menu;
     }
     
-    public int menuDisplay(){
-        // get users status
-        Users userStatus = new Users();
-        String userRole;
-        userRole = userStatus.userStatus();
-        System.out.println("Your role is: " + userRole + "\n");
-
+    public int menuDisplay(String userRole){
         //Menu options
         while (true) {
             try {
-                System.out.println("Main menu:");
+                System.out.println("\n"+"Main menu:");
                 List<String> menu = getMenu(userRole);
 
                 System.out.println( "Select your your option by entering a number from 0 - " + String.valueOf(menu.size()-1));
@@ -47,7 +41,7 @@ public class Menu {
                     System.out.println(menu.get(userMenuChoice));
                     return userMenuChoice;
                 } else {
-                    System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 0 - " + menu.size() + "!\n");
+                    System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 0 - " + String.valueOf(menu.size()-1) + "!\n");
                 }
             } catch (Exception e) {
                 System.out.println("Error: Input is not an number."+ "\n");
