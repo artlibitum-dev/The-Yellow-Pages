@@ -8,11 +8,11 @@ public class Main {
         // welcome message
         System.out.println("Welcome to Yellow Pages!" + "\n");
 
-        // get users status
-        Users userStatus = new Users();
-        String userRole;
-        userRole = userStatus.userStatus();
-        System.out.println("Your role is: " + userRole + "\n");
+
+
+
+
+
 
         //display menu
         Menu menuDisplay = new Menu();
