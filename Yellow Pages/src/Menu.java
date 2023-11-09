@@ -44,7 +44,7 @@ public class Menu {
 
                 userMenuChoice = scanner.nextInt();
                 if (userMenuChoice < menu.size() ) {
-                    System.out.print(menu.get(userMenuChoice));
+                    System.out.println(menu.get(userMenuChoice));
                     return userMenuChoice;
                 } else {
                     System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 0 - " + menu.size() + "!\n");

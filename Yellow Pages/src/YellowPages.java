@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.midi.Soundbank;
+
 public class YellowPages {
 
     private static List<ContactDetails> contacts = new ArrayList<>();
@@ -18,25 +20,25 @@ public class YellowPages {
 
     public void viewContacts() /* menu index 1 */ {
         for (ContactDetails contact : contacts) {
-            String name = contact.getFirstName();
-            System.out.println(name);
+            String name = contact.getName();
+            System.out.println(contacts.indexOf(contact)+1 + ". " + name);
         }
     }
 
     public void searchContacts() /* menu index 2 */ {
-
+        System.out.println("search...");
     }
 
     public void addContacts() /* menu index 3 */ {
-
+        System.out.println("add new contact, add return it... ");
     }
 
     public void editContacts() /* menu index 4 */ {
-
+        System.out.println("edit existing contact..." );
     }
 
     public void removeContacts() /* menu index 5 */ {
-
+        System.out.println("remove existing contact...");
     }
     
 }
