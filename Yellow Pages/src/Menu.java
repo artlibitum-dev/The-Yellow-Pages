@@ -1,25 +1,22 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     int userMenuChoice;
     Scanner scanner = new Scanner(System.in);
 
-    private String[] getMenu(String userRole) {
-        String[] menu;
-        if (userRole == "Guest user") {
-            menu = new String[]  {
-                "1. View contacts",
-                "2. Search for contact",
-                "3. Exit"
-            };
-        } else {
-            menu = new String[]  {
-                "1. View contacts",
-                "2. Search for contact",
-                "3. Edit contacts",
-                "4. Exit"
-            };
+    private List<String> getMenu(String userRole) {
+        List<String> menu = new ArrayList<>();
+        menu.add(0, "Exit");
+        menu.add(1, "View contacts");
+        menu.add(2, "Search for contact");
+        
+        if (userRole == "admin") {
+            menu.add(3, "Edit contact");
+            menu.add(4, "Add contact");
         }
+
         return menu;
     }
     
@@ -34,26 +31,22 @@ public class Menu {
         while (true) {
             try {
                 System.out.println("Main menu:");
+                List<String> menu = getMenu(userRole);
 
-                String[] menu = getMenu(userRole);
-
-                System.out.println( "Select your your option by entering a number from 1 - " + menu.length);
-                for (int i=0; i < menu.length; i++ ) {
-                    System.out.println(menu[i]);
+                System.out.println( "Select your your option by entering a number from 0 - " + String.valueOf(menu.size()-1));
+                //printOut menu except 0 index
+                for (int i = 1; i < menu.size(); i++) {
+                    System.out.println(i + ". " + menu.get(i));
                 }
+                // printout menu 0 index - Exit
+                System.out.println("0. " + menu.get(0) + "\n");
+
                 userMenuChoice = scanner.nextInt();
-
-
-                if (userMenuChoice < menu.length+1 ) {
-                    System.out.println(menu[userMenuChoice - 1]);
+                if (userMenuChoice < menu.size() ) {
+                    System.out.print(menu.get(userMenuChoice));
                     return userMenuChoice;
                 } else {
-                    if (userRole.equals("Guest user")) {
-                        System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 1 - " + menu.length + "!\n");
-                    } else {
-                        System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 1 -" + menu.length + "!\n");
-
-                    }
+                    System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 0 - " + menu.size() + "!\n");
                 }
             } catch (Exception e) {
                 System.out.println("Error: Input is not an number."+ "\n");
