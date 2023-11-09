@@ -13,8 +13,9 @@ public class Menu {
         menu.add(2, "Search for contact");
         
         if (userRole == "admin") {
-            menu.add(3, "Edit contact");
-            menu.add(4, "Add contact");
+            menu.add(3, "Add contact");
+            menu.add(4, "Edit contact");
+            menu.add(5, "Remove contact");
         }
 
         return menu;

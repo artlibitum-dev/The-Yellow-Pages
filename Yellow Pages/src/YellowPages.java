@@ -16,12 +16,27 @@ public class YellowPages {
         contacts.add(new ContactDetails("David", "Lee", 29, "Beachtown", 22222, "Birch Street", 12));
     }
 
-    public void viewContacts() {
+    public void viewContacts() /* menu index 1 */ {
         for (ContactDetails contact : contacts) {
             String name = contact.getFirstName();
             System.out.println(name);
         }
     }
 
+    public void searchContacts() /* menu index 2 */ {
+
+    }
+
+    public void addContacts() /* menu index 3 */ {
+
+    }
+
+    public void editContacts() /* menu index 4 */ {
+
+    }
+
+    public void removeContacts() /* menu index 5 */ {
+
+    }
     
 }
