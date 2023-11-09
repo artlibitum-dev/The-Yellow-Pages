@@ -54,6 +54,10 @@ class ContactDetails {
         return gateNumber;
     }
 
+    public String getName() {
+         return (firstName + " " + lastName);
+    }
+
     public String getAddress() {
         return ("City: " + city + " | Postal Code: " + postalCode + " | Street: " + streetName + " | Gate Number: "
                 + gateNumber);
