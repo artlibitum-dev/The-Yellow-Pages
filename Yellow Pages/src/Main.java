@@ -3,16 +3,17 @@ import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
+    Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         // welcome message
-        System.out.println( "Welcome to Yellow Pages!");
+        System.out.println("Welcome to Yellow Pages!" + "\n");
 
         // get users status
         Users userStatus = new Users();
-        userStatus.userStatus();
-        // login to gain access to as an admin
-        userStatus.login();
+        String userRole;
+        userRole = userStatus.userStatus();
+        System.out.println("Your role is: " + userRole + "\n");
+
         //display menu
         Menu menuDisplay = new Menu();
         menuDisplay.menuDisplay();
@@ -37,7 +38,7 @@ public class Main {
             //Open contact details
         int openContactDetails = 0;
             System.out.println("Pick which number you would like to open");
-            openContactDetails = scanner.nextInt();
+            // openContactDetails = scanner.nextInt();
             if (openContactDetails == 1){
                 contactDetails.Drogba();
             }

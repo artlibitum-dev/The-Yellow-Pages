@@ -1,68 +1,77 @@
-import java.util.Objects;
 import java.util.Scanner;
+
 public class Users {
-    int userLoginChoice = 0;
-    Boolean guestUser;
-    Boolean adminUser;
+    int userLoginChoice;
     String userType;
-
-
-    int defaultPassword = 1234;
-    public String userStatus( ){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println( "If you are a guest enter 1 | If you are an admin enter 2");
-        // have user choose there status
-        do {
-            userLoginChoice = scanner.nextInt();
-            if( userLoginChoice == 1){
-                guestUser = true;
-                adminUser = false;
-                System.out.println("You are an guest");
-            } else if ( userLoginChoice == 2) {
-                guestUser = false;
-                adminUser = true;
-                System.out.println("You are an admin!");
-            } else  {
-                System.out.println("Invalid entry! You enter: " + userLoginChoice);
-                System.out.println( "If you are a guest enter 1 | If you are an admin enter 1");
-            }
-        }while (userLoginChoice < 1 || userLoginChoice > 2 );
-
-        if (guestUser){
-            userType = "Guest";
-        } else {
-            userType = "Admin";
-        }
-        return userType;
-    }
-
-    public void login(){
-if (Objects.equals(userType, "Admin")){
     Scanner scanner = new Scanner(System.in);
-    System.out.println("enter password:");
+    int defaultPassword = 1234;
+    public String userStatus() {
+        while (true) {
+            // have user choose there status
+            System.out.println("If you are a guest enter: 1 | If you are an admin enter: 2");
+            int userLoginChoice = scanner.nextInt();
 
-    int newPasswordEntry;
-    int newPasswordEntryTwo;
-    int newPassword;
-
-    defaultPassword = scanner.nextInt();
-    if (defaultPassword == 1234){
-        System.out.println("Please Create new password with four digits:");
-        newPasswordEntry = scanner.nextInt();
-        System.out.println("Please reenter contact:");
-        newPasswordEntryTwo = scanner.nextInt();
-
-        if (newPasswordEntry == newPasswordEntryTwo){
-            newPassword =newPasswordEntryTwo;
-        } else {
-            System.out.println("Didn't match, Please try again!");
-            login();
+            if (userLoginChoice == 1 || userLoginChoice == 2) {
+                if (userLoginChoice == 2) {
+                    return userType = login();
+                } else  {
+                    return userType = "Guest user";
+                }
+            } else {
+                System.out.print("You selectd " + userLoginChoice + " : invalid entry! please try again" + "\n");
+            }
         }
-
-
-
-
     }
-}
+
+    private String login() {
+        // Default password
+        int defaultPassword = 1234;
+        int defaultPasswordEntry;
+        String defaultPasswordEntered = "incorrect";
+        //Variable to register users new password
+        int newPasswordEntryOne;
+        int newPasswordEntryTwo;
+        //new password
+        int newPassword;
+
+        // Admin login method
+        while (true) {
+            if (defaultPasswordEntered.equals("incorrect")){
+            try {
+                System.out.println("Login as Admin | Please enter password:");
+                defaultPasswordEntry = scanner.nextInt();
+                if (defaultPasswordEntry == defaultPassword) {
+                    defaultPasswordEntered = "correct";
+                    System.out.println("Thank You! Please create new password.");
+                } else {
+                    System.out.println("Incorrect password! Please try again");
+                }
+            } catch (Exception e) {
+                System.out.println("Error: Input is not an number.");
+                scanner.next(); // Consume the invalid input
+            }
+        }
+            if (defaultPasswordEntered.equals("correct")){
+                try {
+                    System.out.println("Enter a new 4 digits PIN:");
+                    newPasswordEntryOne = scanner.nextInt();
+                    System.out.println("Please re-enter new 4 digits PIN:");
+                    newPasswordEntryTwo = scanner.nextInt();
+
+                if (newPasswordEntryOne == newPasswordEntryTwo) {
+                    //assign new password to be stored in a variable for future logging-ins
+                    newPassword = newPasswordEntryTwo;
+                    System.out.println("New password created. You are now logged in!");
+                    return "admin";
+                } else {
+                    System.out.print("Sorry your passwords did not match, please try again!");
+                        }
+
+                } catch (Exception e) {
+                    System.out.println("Error: Input is not an number.");
+                    scanner.next(); // Consume the invalid input
+                    }
+             }
+        }
     }
 }

@@ -1,37 +1,42 @@
 import java.util.Scanner;
 
 public class Menu {
-    int userMenuChoice = 0;
+    int userMenuChoice;
+    Scanner scanner = new Scanner(System.in);
+    String[] menu = {
+            "1. View contacts",
+            "2. Search for contact",
+            "3. Edit contacts",
+            "4. Exit"
+    };
     public int menuDisplay(){
-        Scanner scanner = new Scanner(System.in);
+//        if (user.equals("Guest user")){
+//           menu = new String[]{
+//                   "1. View contacts",
+//                   "2. Search for contact",
+//                   "3. Exit"
+//           };
+//        }
         //Menu options
-        System.out.println("Main menu:");
-        System.out.println("1. View contacts");
-        System.out.println("2. Search for contact");
-        System.out.println("3. Edit contacts");
-        System.out.println("4. Exit");
-        System.out.println( "Select your your option by entering a number from 1 - 4");
-
-        do {
-            userMenuChoice = scanner.nextInt();
-            if( userMenuChoice == 1){
-                System.out.println("1. View contacts");
-            } else if ( userMenuChoice  == 2) {
-                System.out.println("2. Search for contact");
-            } else if ( userMenuChoice  == 3) {
-                System.out.println("3. Edit contacts");}
-            else if ( userMenuChoice  == 4) {
-                System.out.println("4. Exit");}
-            else  {
-                System.out.println("Invalid entry! You enter: " + userMenuChoice + "is not a number between 1-4!");
-                System.out.println( "Select your your option by entering a number from 1 - 4");
+        while (true) {
+            try {
                 System.out.println("Main menu:");
-                System.out.println("1. View contacts");
-                System.out.println("2. Search for contact");
-                System.out.println("3. Edit contacts");
-                System.out.println("4. Exit");
+                for (int i=0; i < menu.length; i++ ) {
+                    System.out.println(menu[i]);
+                }
+                System.out.println( "Select your your option by entering a number from 1 - 4");
+                userMenuChoice = scanner.nextInt();
+
+                if (userMenuChoice < menu.length+1 ) {
+                    System.out.println(menu[--userMenuChoice]);
+                    return userMenuChoice;
+                } else {
+                    System.out.print("Invalid entry! You enter: " + userMenuChoice + " is not a number between 1-4!" + "\n");
+                }
+            } catch (Exception e) {
+                System.out.println("Error: Input is not an number."+ "\n");
+                scanner.next(); // Consume the invalid input
             }
-        }while (userMenuChoice < 1 || userMenuChoice > 4 );
-        return userMenuChoice;
+        }
     }
 }
